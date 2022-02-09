@@ -1,21 +1,27 @@
 #include <iostream>
 using namespace std;
 
-void swap(int &a, int &b)
+enum Light
 {
-    int temp = a;
-    a = b;
-    b = temp;
-}
+
+    stop, // red
+    slow,// yellow
+    go  // green
+
+};
 
 int main()
 {
-    int x = 10;
-    int y = 20;
-    cout << "x = " << x << endl;
-    cout << "y = " << y << endl;
-    swap(x, y);
-    cout << "x = " << x << endl;
-    cout << "y = " << y << endl;
-    return 0;
+    Light trafficLight ;
+    trafficLight = stop;
+
+    for(int time=0 ; time < 12 ; time++)
+    {
+
+    cout << "Time : " << time << "\t Trafic light is " << trafficLight << endl ;
+
+    if               ( trafficLight == stop)       {trafficLight = go; }         // red > green
+    else if        ( trafficLight == go )         {trafficLight = slow; }     // green > yellow
+    else if        ( trafficLight == slow )      {trafficLight = stop; }      // yellow > red 
+    }
 }
